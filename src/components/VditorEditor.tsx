@@ -4,12 +4,26 @@ import { VditorEditor } from "react-vditor"
 
 const Editor: FC = () => {
     const [vditor, setVditor] = useState<Vditor>()
+    const [height, setHeight] = useState(window.innerHeight);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setHeight(window.innerHeight);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
+
     useEffect(() => {
         if (!!vditor) {
             console.log(`Update Default Vditor:`)
             console.log(vditor)
         }
     }, [vditor])
+
     return (
         <VditorEditor
             keyID="base-editor"
@@ -18,7 +32,7 @@ const Editor: FC = () => {
                 toolbar: [],
                 mode: "ir",
                 // theme: "dark",
-                height: window.innerHeight, // 부모 요소의 높이에 맞추기 위해 현재 창의 높이를 설정
+                height: height, // 반응형 높이 설정
             }}
         />
     )
