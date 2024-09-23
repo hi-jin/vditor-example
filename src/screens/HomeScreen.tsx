@@ -25,7 +25,7 @@ export default function HomeScreen() {
 
   return (
     <div className="App h-full flex" onMouseMove={resize} onMouseUp={stopResizing} onMouseLeave={stopResizing}>
-      <div className={`h-full overflow-hidden ${isSidebarOpen ? '' : 'hidden'}`} style={{ width: sidebarWidth }}>
+      <div className={`h-full overflow-hidden ${isSidebarOpen ? '' : 'hidden'}`} style={{ width: sidebarWidth, minWidth: 250 }}>
         <FileExplorer />
       </div>
       <div

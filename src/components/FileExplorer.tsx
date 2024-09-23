@@ -66,8 +66,13 @@ const FileExplorer: React.FC = () => {
     );
 
     return (
-        <div className={`px-4 pt-[50px] h-full overflow-auto bg-sidebarBackground text-sidebarForeground`}>
+        <div className={`px-4 pt-[50px] h-full overflow-auto bg-sidebarBackground text-sidebarForeground relative`}>
             {renderTree(files)}
+            <div className='absolute bottom-5 left-5 right-5'>
+                <div className='bg-divider rounded-md px-2 py-1 cursor-pointer text-center hover:animate-pulse'>
+                    + Import New Source
+                </div>
+            </div>
         </div>
     );
 };
