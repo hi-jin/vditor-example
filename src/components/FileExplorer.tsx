@@ -66,7 +66,7 @@ const FileExplorer: React.FC = () => {
     );
 
     return (
-        <div className="bg-gray-100 p-4 h-full overflow-auto">
+        <div className={`px-4 pt-[50px] h-full overflow-auto bg-sidebarBackground text-sidebarForeground`}>
             {renderTree(files)}
         </div>
     );

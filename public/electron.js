@@ -6,12 +6,20 @@ async function createWindow() {
     isDev = await import("electron-is-dev");
 
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1280,
+        height: 720,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
         },
+        trafficLightPosition: {
+            x: 18,
+            y: 14,
+        },
+        frame: true,
+        titleBarStyle: 'hidden',
+        title: "Vector MD",
+        movable: true,
     });
 
     mainWindow.loadURL(

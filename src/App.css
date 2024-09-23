@@ -44,3 +44,17 @@
 .cursor-col-resize {
   cursor: col-resize;
 }
+
+.vditor {
+  border: none !important;
+  height: 100% !important;
+}
+
+.vditor-reset {
+  background-color: var(--main-background) !important;
+  padding: 35px !important;
+}
+
+ol {
+  list-style: decimal;
+}

@@ -1,39 +1,40 @@
 import React, { FC, useState, useEffect } from "react"
-import Vditor from "vditor"
 import { VditorEditor } from "react-vditor"
+import { RootState } from "../redux/store";
+import { useSelector } from "react-redux";
+import Vditor from "vditor";
 
 const Editor: FC = () => {
-    const [vditor, setVditor] = useState<Vditor>()
-    const [height, setHeight] = useState(window.innerHeight);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setHeight(window.innerHeight);
-        };
-
-        window.addEventListener('resize', handleResize);
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
+    const themeMode = useSelector((state: RootState) => state.theme.mode);
+    const [vditor, setVditor] = useState<Vditor>();
 
     useEffect(() => {
         if (!!vditor) {
-            console.log(`Update Default Vditor:`)
-            console.log(vditor)
+            vditor.setTheme(
+                themeMode === 'dark' ? "dark" : "classic",
+                themeMode === 'dark' ? "dark" : "light",
+                themeMode === 'dark' ? "dark" : "light",
+                "https://cdn.jsdelivr.net/npm/vditor/dist/css/content-theme"
+            );
         }
-    }, [vditor])
+    }, [themeMode]);
+
 
     return (
         <VditorEditor
             keyID="base-editor"
-            bindVditor={setVditor}
             options={{
                 toolbar: [],
                 mode: "ir",
-                // theme: "dark",
-                height: height, // 반응형 높이 설정
+                theme: themeMode === 'dark' ? "dark" : "classic",
+                preview: {
+                    theme: {
+                        current: themeMode === 'dark' ? "dark" : "light",
+                        path: "https://cdn.jsdelivr.net/npm/vditor/dist/css/content-theme",
+                    },
+                },
             }}
+            bindVditor={setVditor}
         />
     )
 }

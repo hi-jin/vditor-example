@@ -2,7 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
+@layer base {
+  :root {
+    --sidebar-background: #FFFFFF;
+    --sidebar-foreground: #212121;
+    --main-background: #FFFFFF;
+    --main-foreground: #212121;
+    --divider: #E0E0E0;
+  }
+
+  html[data-theme="dark"] {
+    --sidebar-background: #24272E;
+    --sidebar-foreground: #C4CBDA;
+    --main-background: #1F2228;
+    --main-foreground: #C4CBDA;
+    --divider: #3C3C4A;
+  }
+}
+
+html,
+body,
+#root {
   width: 100%;
   height: 100%;
 }
