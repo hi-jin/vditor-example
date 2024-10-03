@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import themeReducer from './themeSlice';
-import sidebarReducer from './sidebar';
+import sidebarReducer from './sidebarSlice';
 
 export const store = configureStore({
     reducer: {

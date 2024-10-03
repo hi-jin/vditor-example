@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import IFile from '../models/file';
+import { useNavigate } from 'react-router-dom';
 
 const FileExplorer: React.FC = () => {
     const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set());
+    const navigate = useNavigate();
 
     // 임시 파일 구조
     const files: IFile[] = [
@@ -69,7 +71,10 @@ const FileExplorer: React.FC = () => {
         <div className={`px-4 pt-[50px] h-full overflow-auto bg-sidebarBackground text-sidebarForeground relative`}>
             {renderTree(files)}
             <div className='absolute bottom-5 left-5 right-5'>
-                <div className='bg-divider rounded-md px-2 py-1 cursor-pointer text-center hover:animate-pulse'>
+                <div
+                    className='bg-divider rounded-md px-2 py-1 cursor-pointer text-center hover:animate-pulse'
+                    onClick={() => navigate('/file-input')}
+                >
                     + Import New Source
                 </div>
             </div>
